@@ -10,6 +10,7 @@ export default function App() {
             href="https://github.com/themightyvicki1/react-weather-project"
             title="https://github.com/themightyvicki1/react-weather-project"
             target="_blank"
+            rel="noreferrer"
           >
             Open source
           </a>{" "}
@@ -18,7 +19,6 @@ export default function App() {
             <i class="fa-regular fa-heart"></i>
           </small>
         </footer>
-        <button className="btn btn-primary">Hello</button>
       </div>
     </div>
   );
