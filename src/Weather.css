@@ -1,4 +1,35 @@
 .Weather {
   background-color: lightcoral;
+  border: 3px solid lightblue;
   color: darkcyan;
+  /*space around the weather div*/
+  margin: 30px;
+  border-radius: 4px;
+  max-width: 600px;
+}
+
+.Weather form {
+  margin-top: 30px;
+  padding-left: 30px;
+}
+
+/*targeting the h1 in the .Weather component */
+.Weather h1 {
+  color: aliceblue;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 1.5;
+  padding: 10px;
+}
+
+/*all ul's come with some space, set to 0 to fix and adjust later */
+.Weather ul {
+  margin: 0;
+  padding: 0;
+}
+.Weather li {
+  list-style: none;
+  font-size: 18px;
 }
