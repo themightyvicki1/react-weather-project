@@ -1,1 +1,10 @@
+.App {
+  max-width: 600px;
+  /*this will center everything on the page and add some spacing */
+  margin: 30px auto;
+}
 
+.App footer {
+  font-size: 11px;
+  margin: 10px 0;
+}

@@ -13,16 +13,23 @@ export default function Weather() {
             <input
               type="search"
               placeholder="Enter a city..."
-              className="form-search-bar"
+              className="form-search-bar w-100"
+              /*in react use autoFocus with captial F */
+              /* turn on so when page loads it focuses on search bar to start typing right away*/
+              autoFocus="on"
             />
           </div>
           <div className="col-3">
             {/*use as a button, give bootstrap class name*/}
-            <input type="submit" value="Search" className="btn btn-primary" />
+            <input
+              type="submit"
+              value="Search"
+              className="btn btn-primary w-100"
+            />
           </div>
           {/* added button here to be able to search for current location */}
           <div className="col-3">
-            <button className="btn btn-primary">Current</button>
+            <button className="btn btn-primary w-100">Current</button>
           </div>
         </div>
       </form>
@@ -32,13 +39,15 @@ export default function Weather() {
         <li>Mostly cloudy</li>
       </ul>
       {/*create row to create 2 cols to split the screen in half, info on each side*/}
-      <div className="row">
+      <div className="row mt-3">
         <div className="col-6">
           <img
             src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
             alt="cloudy sky"
           />
-          12°C
+
+          <span className="temperature">12</span>
+          <span className="unit">°C</span>
         </div>
         <div className="col-6">
           <li>Percipitation: 15%</li>
