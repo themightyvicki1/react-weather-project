@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Weather.css";
 
+// receive defaultCity properties here //
 // create HTML of weather app //
-export default function Weather() {
+export default function Weather(props) {
   // create state, make it a boolean and by default set to false, conditional rendering //
   //const [ready, setReady] = useState(false);
   //create state management variable/array to be able to update the temperature, set to null b/c we don't know the temperature yet //
@@ -100,10 +101,11 @@ export default function Weather() {
         </div>
       </div>
     );
+    //else if it's not ready, make the api call, that will then set everything and set ready to true //
   } else {
     const apiKey = `1fd8093fa5ff12d796d7de756cc9d6b9`;
-    let city = "Sacramento";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    //let city = "Sacramento";//
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
 
     axios.get(apiUrl).then(handleResponse);
     return "Loading...";

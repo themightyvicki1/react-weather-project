@@ -10,7 +10,8 @@ export default function App() {
       <div className="container">
         <h1>React Weather Application</h1>
         {/*component call to the weather app */}
-        <Weather />
+        {/*send a default city, this will load app with this city */}
+        <Weather defaultCity="New York" />
         <footer>
           <a
             href="https://github.com/themightyvicki1/react-weather-project"
