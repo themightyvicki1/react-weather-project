@@ -5,21 +5,38 @@ import "./Weather.css";
 // create HTML of weather app //
 export default function Weather() {
   // create state, make it a boolean and by default set to false, conditional rendering //
-  const [ready, setReady] = useState(false);
+  //const [ready, setReady] = useState(false);
   //create state management variable/array to be able to update the temperature, set to null b/c we don't know the temperature yet //
-  const [temperature, setTemperature] = useState(null);
+  // const [temperature, setTemperature] = useState(null);
+  // create a new state, weatherData object to hold ALL data or else have to create single variables for each wind, humidity, etc //
+  // by default, set to empty object {} //
+  const [weatherData, setWeatherData] = useState({ ready: false });
   function handleResponse(response) {
+    setWeatherData({
+      ready: true,
+      temperature: response.data.main.temp,
+      humidity: response.data.main.humidity,
+      feelsLike: response.data.main.feels_like,
+      tempMax: response.data.main.temp_max,
+      tempMin: response.data.main.temp_min,
+      city: response.data.name,
+      windSpeed: response.data.wind.speed,
+      description: response.data.weather[0].description,
+      date: "Thursday 3:00pm",
+    });
     // update / set temperature here (function) //
-    setTemperature(response.data.main.temp);
+    //setTemperature(response.data.main.temp);
     // b/c now the temperature has been set so ready it set to true //
-    setReady(true);
+    // to not show fake data on load //
+    //setReady(true); using ready in the actual weatherData object set to true instead //
 
     // using boolean to make sure everything is ready, when we get response back from api, it is ready and can show application //
     console.log(response.data);
   }
 
   // conditional rendering so it doesn't loop and keep rendering, if ready it true//
-  if (ready) {
+  // if weatherData object is ready, being ready is true
+  if (weatherData.ready) {
     return (
       <div className="Weather">
         {/*create search engine with a form */}
@@ -50,33 +67,42 @@ export default function Weather() {
             </div>
           </div>
         </form>
-        <h1>Sacramento</h1>
+        <h1>{weatherData.city}</h1>
         <ul>
-          <li>Thursday 4:00pm</li>
-          <li>Mostly cloudy</li>
+          <li>{weatherData.date}</li>
+          <li className="text-capitalize">{weatherData.description}</li>
         </ul>
         {/*create row to create 2 cols to split the screen in half, info on each side*/}
         <div className="row mt-3">
           <div className="col-6">
             <img
               src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-              alt="cloudy sky"
+              alt={weatherData.description}
             />
 
-            <span className="temperature">{Math.round(temperature)}</span>
+            <span className="temperature">
+              {Math.round(weatherData.temperature)}
+            </span>
             <span className="unit">°C</span>
+            <div className="feelsLikeTemp">
+              <small>
+                <i>feels like: </i> {Math.round(weatherData.feelsLike)}
+                °C
+              </small>
+            </div>
           </div>
           <div className="col-6">
-            <li>Percipitation: 15%</li>
-            <li>Humidity:70%</li>
-            <li>Wind speed:12km/h</li>
+            <li>High: {Math.round(weatherData.tempMax)}°</li>
+            <li>Low: {Math.round(weatherData.tempMin)}°</li>
+            <li>Humidity: {Math.round(weatherData.humidity)}%</li>
+            <li>Wind: {Math.round(weatherData.windSpeed)} km/h</li>
           </div>
         </div>
       </div>
     );
   } else {
     const apiKey = `1fd8093fa5ff12d796d7de756cc9d6b9`;
-    let city = "New York";
+    let city = "Sacramento";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
     axios.get(apiUrl).then(handleResponse);
