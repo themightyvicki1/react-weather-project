@@ -1,8 +1,17 @@
 import React from "react";
+import axios from "axios";
 import "./Weather.css";
 
 // create HTML of weather app //
 export default function Weather() {
+  function handleSubmit(response) {
+    console.log(response);
+  }
+  // api key & url stored in variables //
+  let apiKey = "be60748992fab0f5da8162563fb21245";
+  let city = "New York";
+  let apiUrl = `http://api.openweathermap.org/data/2.5/forecast/daily?lat=44.34&lon=10.99&cnt=7&appid=${apiKey}`;
+  axios.get(apiUrl).then(handleSubmit);
   return (
     <div className="Weather">
       {/*create search engine with a form */}
@@ -20,7 +29,7 @@ export default function Weather() {
             />
           </div>
           <div className="col-3">
-            {/*use as a button, give bootstrap class name*/}
+            {/*use as a button, give bootstrap className*/}
             <input
               type="submit"
               value="Search"

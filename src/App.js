@@ -22,7 +22,7 @@ export default function App() {
           </a>{" "}
           coded by Victoria Greer{" "}
           <small>
-            <i class="fa-regular fa-heart"></i>
+            <i className="fa-regular fa-heart"></i>
           </small>
         </footer>
       </div>
