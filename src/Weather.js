@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Weather.css";
+import FormattedDate from "./FormattedDate";
 
 // receive defaultCity properties here //
 // create HTML of weather app //
@@ -23,7 +24,7 @@ export default function Weather(props) {
       city: response.data.name,
       windSpeed: response.data.wind.speed,
       description: response.data.weather[0].description,
-      date: "Thursday 3:00pm",
+      date: new Date(response.data.dt * 1000),
     });
     // update / set temperature here (function) //
     //setTemperature(response.data.main.temp);
@@ -70,7 +71,10 @@ export default function Weather(props) {
         </form>
         <h1>{weatherData.city}</h1>
         <ul>
-          <li>{weatherData.date}</li>
+          {/*send to component, the date variable of object we created above, to be able to format the date */}
+          <li>
+            <FormattedDate date={weatherData.date} />
+          </li>
           <li className="text-capitalize">{weatherData.description}</li>
         </ul>
         {/*create row to create 2 cols to split the screen in half, info on each side*/}
