@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Weather.css";
 import FormattedDate from "./FormattedDate";
+import WeatherInfo from "./WeatherInfo";
 
 // receive defaultCity properties here //
 // create HTML of weather app //
@@ -13,7 +14,9 @@ export default function Weather(props) {
   // create a new state, weatherData object to hold ALL data or else have to create single variables for each wind, humidity, etc //
   // by default, set to empty object {} //
   const [weatherData, setWeatherData] = useState({ ready: false });
-  function handleResponse(response) {
+  // default city sent from app component //
+  const [city, setCity] = useState(props.defaultCity);
+  function HandleResponse(response) {
     setWeatherData({
       ready: true,
       temperature: response.data.main.temp,
@@ -26,6 +29,7 @@ export default function Weather(props) {
       description: response.data.weather[0].description,
       date: new Date(response.data.dt * 1000),
     });
+
     // update / set temperature here (function) //
     //setTemperature(response.data.main.temp);
     // b/c now the temperature has been set so ready it set to true //
@@ -36,13 +40,34 @@ export default function Weather(props) {
     console.log(response.data);
   }
 
+  function newSearch() {
+    const apiKey = `1fd8093fa5ff12d796d7de756cc9d6b9`;
+    //let city = "Sacramento";//
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+    axios.get(apiUrl).then(HandleResponse);
+  }
+
+  // handle submit function //
+  function handleSubmit(event) {
+    event.preventDefault();
+    newSearch();
+  }
+
+  function handleCitySearched(event) {
+    // don't prevent this one //
+    // store the event value in a state //
+    //search for city here with api call //
+    setCity(event.target.value);
+  }
   // conditional rendering so it doesn't loop and keep rendering, if ready it true//
   // if weatherData object is ready, being ready is true
   if (weatherData.ready) {
     return (
       <div className="Weather">
         {/*create search engine with a form */}
-        <form>
+        {/*add event listener on form to use as search engine*/}
+        <form onSubmit={handleSubmit}>
           {/* make into row and col so they'll appear side by side */}
           <div className="row">
             <div className="col-6">
@@ -53,6 +78,8 @@ export default function Weather(props) {
                 /*in react use autoFocus with captial F */
                 /* turn on so when page loads it focuses on search bar to start typing right away*/
                 autoFocus="on"
+                //whenever this changes, onChange, handle city change (function)//
+                onChange={handleCitySearched}
               />
             </div>
             <div className="col-3">
@@ -69,49 +96,13 @@ export default function Weather(props) {
             </div>
           </div>
         </form>
-        <h1>{weatherData.city}</h1>
-        <ul>
-          {/*send to component, the date variable of object we created above, to be able to format the date */}
-          <li>
-            <FormattedDate date={weatherData.date} />
-          </li>
-          <li className="text-capitalize">{weatherData.description}</li>
-        </ul>
-        {/*create row to create 2 cols to split the screen in half, info on each side*/}
-        <div className="row mt-3">
-          <div className="col-6">
-            <img
-              src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-              alt={weatherData.description}
-            />
-
-            <span className="temperature">
-              {Math.round(weatherData.temperature)}
-            </span>
-            <span className="unit">°C</span>
-            <div className="feelsLikeTemp">
-              <small>
-                <i>feels like: </i> {Math.round(weatherData.feelsLike)}
-                °C
-              </small>
-            </div>
-          </div>
-          <div className="col-6">
-            <li>High: {Math.round(weatherData.tempMax)}°</li>
-            <li>Low: {Math.round(weatherData.tempMin)}°</li>
-            <li>Humidity: {Math.round(weatherData.humidity)}%</li>
-            <li>Wind: {Math.round(weatherData.windSpeed)} km/h</li>
-          </div>
-        </div>
+        {/*display the weatherData array info in this component */}
+        <WeatherInfo data={weatherData} />
       </div>
     );
     //else if it's not ready, make the api call, that will then set everything and set ready to true //
   } else {
-    const apiKey = `1fd8093fa5ff12d796d7de756cc9d6b9`;
-    //let city = "Sacramento";//
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
-
-    axios.get(apiUrl).then(handleResponse);
+    newSearch();
     return "Loading...";
   }
 }

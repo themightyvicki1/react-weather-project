@@ -5,11 +5,11 @@
   /*space around the weather div*/
   /*margin: 30px;*/
   border-radius: 4px;
+  padding: 20px;
 }
 
 .Weather form {
-  margin-top: 30px;
-  padding-left: 30px;
+  margin-top: 10px;
 }
 
 /*targeting the h1 in the .Weather component */
@@ -20,7 +20,6 @@
   font-weight: 500;
   font-size: 36px;
   line-height: 1.5;
-  padding: 10px;
 }
 
 /*all ul's come with some space, set to 0 to fix and adjust later */
