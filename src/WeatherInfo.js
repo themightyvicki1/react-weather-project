@@ -16,10 +16,7 @@ export default function WeatherInfo(props) {
       {/*create row to create 2 cols to split the screen in half, info on each side*/}
       <div className="row mt-3">
         <div className="col-6">
-          <img
-            src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-            alt={props.data.description}
-          />
+          <img src={props.data.iconUrl} alt={props.data.description} />
 
           <span className="temperature">
             {Math.round(props.data.temperature)}

@@ -28,6 +28,7 @@ export default function Weather(props) {
       windSpeed: response.data.wind.speed,
       description: response.data.weather[0].description,
       date: new Date(response.data.dt * 1000),
+      iconUrl: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
     });
 
     // update / set temperature here (function) //
