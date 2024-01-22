@@ -1,6 +1,7 @@
 import React from "react";
 import FormattedDate from "./FormattedDate";
 import WeatherIcon from "./WeatherIcon";
+import WeatherUnit from "./WeatherUnit";
 
 // changed from weatherData(array).variable(temperature, humidity, etc) to props.data.variable b/c sending data as props not array b/c array isn't created here //
 export default function WeatherInfo(props) {
@@ -19,10 +20,9 @@ export default function WeatherInfo(props) {
         <div className="col-6">
           <WeatherIcon code={props.data.icon} />
 
-          <span className="temperature">
-            {Math.round(props.data.temperature)}
-          </span>
-          <span className="unit">°C</span>
+          {/*send celsius (variable that is holding the temperature in celsius form) data to convert in the component */}
+          <WeatherUnit celsius={props.data.temperature} />
+
           <div className="feelsLikeTemp">
             <small>
               <i>feels like: </i> {Math.round(props.data.feelsLike)}
