@@ -4,15 +4,7 @@ import React from "react";
 export default function FormattedDate(props) {
   //console.log(props.date);//
   //array holding all the days of the week
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   let months = [
     "Jan",
@@ -42,9 +34,52 @@ export default function FormattedDate(props) {
     hours = `0${hours}`;
   }
 
+  let ampm = "am";
+  if (hours > 11) {
+    ampm = "pm";
+  }
+
+  if (hours === 13) {
+    hours = 1;
+  }
+  if (hours === 14) {
+    hours = 2;
+  }
+  if (hours === 15) {
+    hours = 3;
+  }
+  if (hours === 16) {
+    hours = 4;
+  }
+  if (hours === 17) {
+    hours = 5;
+  }
+  if (hours === 18) {
+    hours = 6;
+  }
+  if (hours === 19) {
+    hours = 7;
+  }
+  if (hours === 20) {
+    hours = 8;
+  }
+  if (hours === 21) {
+    hours = 9;
+  }
+  if (hours === 22) {
+    hours = 10;
+  }
+  if (hours === 23) {
+    hours = 11;
+  }
+  if (hours === 24) {
+    hours = 12;
+  }
+
   return (
     <div className="FormattedDate">
-      {day} {month}. {dayOfMonth}, {year} {hours}:{minutes}
+      Last updated: {day} {month}. {dayOfMonth}, {year} {hours}:{minutes}
+      {ampm}
     </div>
   );
 }
