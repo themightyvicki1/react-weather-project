@@ -1,5 +1,6 @@
 import React from "react";
 import FormattedDate from "./FormattedDate";
+import WeatherIcon from "./WeatherIcon";
 
 // changed from weatherData(array).variable(temperature, humidity, etc) to props.data.variable b/c sending data as props not array b/c array isn't created here //
 export default function WeatherInfo(props) {
@@ -16,7 +17,7 @@ export default function WeatherInfo(props) {
       {/*create row to create 2 cols to split the screen in half, info on each side*/}
       <div className="row mt-3">
         <div className="col-6">
-          <img src={props.data.iconUrl} alt={props.data.description} />
+          <WeatherIcon code={props.data.icon} />
 
           <span className="temperature">
             {Math.round(props.data.temperature)}
