@@ -21,14 +21,10 @@ export default function WeatherInfo(props) {
           <WeatherIcon code={props.data.icon} />
 
           {/*send celsius (variable that is holding the temperature in celsius form) data to convert in the component */}
-          <WeatherUnit celsius={props.data.temperature} />
-
-          <div className="feelsLikeTemp">
-            <small>
-              <i>feels like: </i> {Math.round(props.data.feelsLike)}
-              °C
-            </small>
-          </div>
+          <WeatherUnit
+            celsius={props.data.temperature}
+            feelsLike={props.data.feelsLike}
+          />
         </div>
         <div className="col-6">
           <ul>
