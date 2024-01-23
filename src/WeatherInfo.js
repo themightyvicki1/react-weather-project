@@ -28,8 +28,8 @@ export default function WeatherInfo(props) {
         </div>
         <div className="col-6">
           <ul>
-            <li>High: {Math.round(props.data.tempMax)}°</li>
-            <li>Low: {Math.round(props.data.tempMin)}°</li>
+            <li>High: {Math.round(props.data.tempMax)}°C</li>
+            <li>Low: {Math.round(props.data.tempMin)}°C</li>
             <li>Humidity: {Math.round(props.data.humidity)}%</li>
             <li>Wind: {Math.round(props.data.windSpeed)} km/h</li>
           </ul>
