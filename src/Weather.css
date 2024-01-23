@@ -37,8 +37,6 @@
 
 /* this is the icon url being targeted */
 .Weather canvas {
-  height: 50px;
-  width: 50px;
   display: inline-block;
   margin-right: 5px;
   margin-left: 5px;
@@ -61,4 +59,18 @@
   top: -28px;
   margin-left: 6px;
   line-height: 1;
+}
+
+/* make new css for weatherinfo */
+.forecast ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.forecast li {
+  border: 1px solid green;
+  border-radius: 2px;
+  text-align: center;
+  padding: 20px;
 }

@@ -18,7 +18,7 @@ export default function WeatherInfo(props) {
       {/*create row to create 2 cols to split the screen in half, info on each side*/}
       <div className="row mt-3">
         <div className="col-6">
-          <WeatherIcon code={props.data.icon} />
+          <WeatherIcon code={props.data.icon} size={50} />
 
           {/*send celsius (variable that is holding the temperature in celsius form) data to convert in the component */}
           <WeatherUnit
@@ -32,6 +32,26 @@ export default function WeatherInfo(props) {
             <li>Low: {Math.round(props.data.tempMin)}°C</li>
             <li>Humidity: {Math.round(props.data.humidity)}%</li>
             <li>Wind: {Math.round(props.data.windSpeed)} km/h</li>
+          </ul>
+        </div>
+        <div className="forecast">
+          <p className="mt-3 mb-0 text-capitalize">5 day forecast</p>
+          <ul>
+            <li>
+              day 1 <WeatherIcon code={props.data.icon} size={30} />
+            </li>
+            <li>
+              day 2 <WeatherIcon code={props.data.icon} size={30} />
+            </li>
+            <li>
+              day 3 <WeatherIcon code={props.data.icon} size={30} />
+            </li>
+            <li>
+              day 4 <WeatherIcon code={props.data.icon} size={30} />
+            </li>
+            <li>
+              day 5 <WeatherIcon code={props.data.icon} size={30} />
+            </li>
           </ul>
         </div>
       </div>
