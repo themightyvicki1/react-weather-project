@@ -20,7 +20,7 @@ export default function WeatherInfo(props) {
         <div className="col-6">
           {/*<WeatherIcon code={props.data.icon} size={50} />*/}
 
-          <img src={props.data.icon} alt="icon" />
+          <img src={props.data.icon} alt={props.data.description} />
           {/*send celsius (variable that is holding the temperature in celsius form) data to convert in the component */}
           <WeatherUnit celsius={props.data.temperature} />
         </div>
@@ -38,11 +38,25 @@ export default function WeatherInfo(props) {
             <li>
               day 1
               <DailyForecast />
+              <img src={props.data.icon} alt="" width="70" />
             </li>
-            <li>day 2</li>
-            <li>day 3</li>
-            <li>day 4</li>
-            <li>day 5</li>
+            <li>
+              day 2
+              <DailyForecast />
+              <img src={props.data.icon} alt="" width="70" />
+            </li>
+            <li>
+              day 3<DailyForecast />
+              <img src={props.data.icon} alt="" width="70" />
+            </li>
+            <li>
+              day 4<DailyForecast />
+              <img src={props.data.icon} alt="" width="70" />
+            </li>
+            <li>
+              day 5<DailyForecast />
+              <img src={props.data.icon} alt="" width="70" />
+            </li>
           </ul>
         </div>
       </div>
