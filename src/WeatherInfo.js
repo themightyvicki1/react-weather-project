@@ -1,6 +1,5 @@
 import React from "react";
 import FormattedDate from "./FormattedDate";
-import WeatherIcon from "./WeatherIcon";
 import WeatherUnit from "./WeatherUnit";
 import DailyForecast from "./DailyForecast";
 
@@ -19,7 +18,7 @@ export default function WeatherInfo(props) {
       {/*create row to create 2 cols to split the screen in half, info on each side*/}
       <div className="row mt-3">
         <div className="col-6">
-          <WeatherIcon code={props.data.icon} size={50} />
+          {/*<WeatherIcon code={props.data.icon} size={50} />*/}
 
           {/*send celsius (variable that is holding the temperature in celsius form) data to convert in the component */}
           <WeatherUnit celsius={props.data.temperature} />
@@ -36,21 +35,13 @@ export default function WeatherInfo(props) {
           <p className="mt-3 mb-0 text-capitalize">5 day forecast</p>
           <ul>
             <li>
-              day 1 <WeatherIcon code={props.data.icon} size={30} />{" "}
+              day 1
               <DailyForecast />
             </li>
-            <li>
-              day 2 <WeatherIcon code={props.data.icon} size={30} />
-            </li>
-            <li>
-              day 3 <WeatherIcon code={props.data.icon} size={30} />
-            </li>
-            <li>
-              day 4 <WeatherIcon code={props.data.icon} size={30} />
-            </li>
-            <li>
-              day 5 <WeatherIcon code={props.data.icon} size={30} />
-            </li>
+            <li>day 2</li>
+            <li>day 3</li>
+            <li>day 4</li>
+            <li>day 5</li>
           </ul>
         </div>
       </div>
