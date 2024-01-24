@@ -2,6 +2,7 @@ import React from "react";
 import FormattedDate from "./FormattedDate";
 import WeatherIcon from "./WeatherIcon";
 import WeatherUnit from "./WeatherUnit";
+import DailyForecast from "./DailyForecast";
 
 // changed from weatherData(array).variable(temperature, humidity, etc) to props.data.variable b/c sending data as props not array b/c array isn't created here //
 export default function WeatherInfo(props) {
@@ -21,10 +22,7 @@ export default function WeatherInfo(props) {
           <WeatherIcon code={props.data.icon} size={50} />
 
           {/*send celsius (variable that is holding the temperature in celsius form) data to convert in the component */}
-          <WeatherUnit
-            celsius={props.data.temperature}
-            feelsLike={props.data.feelsLike}
-          />
+          <WeatherUnit celsius={props.data.temperature} />
         </div>
         <div className="col-6">
           <ul>
@@ -38,7 +36,8 @@ export default function WeatherInfo(props) {
           <p className="mt-3 mb-0 text-capitalize">5 day forecast</p>
           <ul>
             <li>
-              day 1 <WeatherIcon code={props.data.icon} size={30} />
+              day 1 <WeatherIcon code={props.data.icon} size={30} />{" "}
+              <DailyForecast />
             </li>
             <li>
               day 2 <WeatherIcon code={props.data.icon} size={30} />
