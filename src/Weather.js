@@ -18,17 +18,17 @@ export default function Weather(props) {
   function HandleResponse(response) {
     setWeatherData({
       ready: true,
-      temperature: response.data.main.temp,
-      humidity: response.data.main.humidity,
-      feelsLike: response.data.main.feels_like,
-      tempMax: response.data.main.temp_max,
-      tempMin: response.data.main.temp_min,
-      city: response.data.name,
-      windSpeed: response.data.wind.speed,
-      description: response.data.weather[0].description,
-      date: new Date(response.data.dt * 1000),
-      //iconUrl: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
-      icon: response.data.weather[0].icon,
+      temperature: response.data.daily[0].temperature.day,
+      humidity: response.data.daily[0].temperature.humidity,
+      //feelsLike: response.data.main.feels_like,
+      tempMax: response.data.daily[0].temperature.maximum,
+      tempMin: response.data.daily[0].temperature.minimum,
+      city: response.data.city,
+      windSpeed: response.data.daily[0].wind.speed,
+      description: response.data.daily[0].condition.description,
+      date: new Date(response.data.daily[0].time * 1000),
+      icon: `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.daily[0].condition.icon}.png`,
+      //icon: response.data.daily[0].condition.icon,
     });
 
     // update / set temperature here (function) //
@@ -42,10 +42,11 @@ export default function Weather(props) {
   }
 
   function newSearch() {
-    const apiKey = `1fd8093fa5ff12d796d7de756cc9d6b9`;
+    const apiKey = `0d7079af8c9adb3t72540o1c3a7eb56d`;
     //let city = "Sacramento";//
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    //let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
+    let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
     axios.get(apiUrl).then(HandleResponse);
   }
 

@@ -20,6 +20,7 @@ export default function WeatherInfo(props) {
         <div className="col-6">
           {/*<WeatherIcon code={props.data.icon} size={50} />*/}
 
+          <img src={props.data.icon} alt="icon" />
           {/*send celsius (variable that is holding the temperature in celsius form) data to convert in the component */}
           <WeatherUnit celsius={props.data.temperature} />
         </div>

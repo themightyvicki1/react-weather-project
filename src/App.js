@@ -11,7 +11,7 @@ export default function App() {
         <h1>React Weather Application</h1>
         {/*component call to the weather app */}
         {/*send a default city to component, this will load app with this city */}
-        <Weather defaultCity="New York" />
+        <Weather defaultCity="Seattle" />
         <footer>
           <a
             href="https://github.com/themightyvicki1/react-weather-project"

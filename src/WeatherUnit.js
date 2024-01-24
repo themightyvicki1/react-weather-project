@@ -23,17 +23,17 @@ export default function WeatherUnit(props) {
             °F
           </a>
         </span>
-        <div className="feelsLikeTemp">
+        {/*<div className="feelsLikeTemp">
           <small>
             <i>feels like: </i> {Math.round(props.feelsLike)}
             °C
           </small>
-        </div>
+    </div>*/}
       </span>
     );
   } else {
     let fahrenheitValue = (props.celsius * 9) / 5 + 32;
-    let fahrenheitFeelsLike = (props.feelsLike * 9) / 5 + 32;
+    //let fahrenheitFeelsLike = (props.feelsLike * 9) / 5 + 32;
     return (
       <span className="WeatherUnit">
         <span className="temperature">{Math.round(fahrenheitValue)}</span>
@@ -44,12 +44,12 @@ export default function WeatherUnit(props) {
           | °F
         </span>
 
-        <div className="feelsLikeTemp">
+        {/*<div className="feelsLikeTemp">
           <small>
             <i>feels like: </i> {Math.round(fahrenheitFeelsLike)}
             °F
           </small>
-        </div>
+    </div>*/}
       </span>
     );
   }
