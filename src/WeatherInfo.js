@@ -37,24 +37,26 @@ export default function WeatherInfo(props) {
           <ul>
             <li>
               day 1
-              <DailyForecast />
+              <DailyForecast
+                long={props.data.longitude}
+                lat={props.data.latitude}
+              />
               <img src={props.data.icon} alt="" width="70" />
             </li>
             <li>
               day 2
-              <DailyForecast />
               <img src={props.data.icon} alt="" width="70" />
             </li>
             <li>
-              day 3<DailyForecast />
+              day 3
               <img src={props.data.icon} alt="" width="70" />
             </li>
             <li>
-              day 4<DailyForecast />
+              day 4
               <img src={props.data.icon} alt="" width="70" />
             </li>
             <li>
-              day 5<DailyForecast />
+              day 5
               <img src={props.data.icon} alt="" width="70" />
             </li>
           </ul>

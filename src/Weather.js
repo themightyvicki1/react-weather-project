@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Weather.css";
 import WeatherInfo from "./WeatherInfo";
+//import DailyForecast from "./DailyForecast";
 
 // receive defaultCity properties here //
 // create HTML of weather app //
@@ -16,8 +17,11 @@ export default function Weather(props) {
   // default city sent from app component //
   const [city, setCity] = useState(props.defaultCity);
   function HandleResponse(response) {
+    //console.log(response);
     setWeatherData({
       ready: true,
+      longitude: response.data.coordinates.longitude,
+      latitude: response.data.coordinates.latitude,
       temperature: response.data.daily[0].temperature.day,
       humidity: response.data.daily[0].temperature.humidity,
       //feelsLike: response.data.main.feels_like,
@@ -38,7 +42,7 @@ export default function Weather(props) {
     //setReady(true); using ready in the actual weatherData object set to true instead //
 
     // using boolean to make sure everything is ready, when we get response back from api, it is ready and can show application //
-    console.log(response.data);
+    //console.log(response.data);
   }
 
   function newSearch() {
