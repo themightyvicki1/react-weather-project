@@ -50,7 +50,7 @@
 }
 
 .Weather .unit {
-  font-size: 24px;
+  font-size: 18px;
   /* fix so the C F move to top, instead of bottom of line, these two lines together */
   position: relative;
   top: -28px;

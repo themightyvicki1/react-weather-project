@@ -1,7 +1,7 @@
 import React from "react";
 import FormattedDate from "./FormattedDate";
 import WeatherUnit from "./WeatherUnit";
-import DailyForecast from "./DailyForecast";
+//import DailyForecast from "./DailyForecast";
 
 // changed from weatherData(array).variable(temperature, humidity, etc) to props.data.variable b/c sending data as props not array b/c array isn't created here //
 export default function WeatherInfo(props) {
@@ -37,10 +37,6 @@ export default function WeatherInfo(props) {
           <ul>
             <li>
               day 1
-              <DailyForecast
-                long={props.data.longitude}
-                lat={props.data.latitude}
-              />
               <img src={props.data.icon} alt="" width="70" />
             </li>
             <li>
