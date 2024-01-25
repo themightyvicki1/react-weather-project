@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Weather.css";
 import WeatherInfo from "./WeatherInfo";
-import DailyForecast from "./DailyForecast";
+//import DailyForecast from "./DailyForecast";
 
 // receive defaultCity properties here //
 // create HTML of weather app //
@@ -20,7 +20,8 @@ export default function Weather(props) {
     //console.log(response);
     setWeatherData({
       ready: true,
-      coordinates: response.data.coordinates,
+      long: response.data.coordinates.longitude,
+      lat: response.data.coordinates.latitude,
       temperature: response.data.daily[0].temperature.day,
       humidity: response.data.daily[0].temperature.humidity,
       //feelsLike: response.data.main.feels_like,
@@ -103,7 +104,6 @@ export default function Weather(props) {
         </form>
         {/*display the weatherData array info in this component */}
         <WeatherInfo data={weatherData} />
-        <DailyForecast coordinates={weatherData.coordinates} />
       </div>
     );
     //else if it's not ready, make the api call, that will then set everything and set ready to true //
