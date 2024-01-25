@@ -20,19 +20,16 @@ export default function Weather(props) {
     //console.log(response);
     setWeatherData({
       ready: true,
-      long: response.data.coordinates.longitude,
-      lat: response.data.coordinates.latitude,
-      temperature: response.data.daily[0].temperature.day,
-      humidity: response.data.daily[0].temperature.humidity,
-      //feelsLike: response.data.main.feels_like,
-      tempMax: response.data.daily[0].temperature.maximum,
-      tempMin: response.data.daily[0].temperature.minimum,
-      city: response.data.city,
-      windSpeed: response.data.daily[0].wind.speed,
-      description: response.data.daily[0].condition.description,
-      date: new Date(response.data.daily[0].time * 1000),
-      icon: `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.daily[0].condition.icon}.png`,
-      //icon: response.data.daily[0].condition.icon,
+      temperature: response.data.main.temp,
+      humidity: response.data.main.humidity,
+      feelsLike: response.data.main.feels_like,
+      tempMax: response.data.main.temp_max,
+      tempMin: response.data.main.temp_min,
+      city: response.data.name,
+      windSpeed: response.data.wind.speed,
+      description: response.data.weather[0].description,
+      date: new Date(response.data.dt * 1000),
+      icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
     });
 
     // update / set temperature here (function) //
@@ -46,11 +43,11 @@ export default function Weather(props) {
   }
 
   function newSearch() {
-    const apiKey = `0d7079af8c9adb3t72540o1c3a7eb56d`;
+    const apiKey = `456d41832ed298b7d12fff1db0159708`;
     //let city = "Sacramento";//
     //let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
-    let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(HandleResponse);
   }
 
@@ -85,6 +82,7 @@ export default function Weather(props) {
                 /* turn on so when page loads it focuses on search bar to start typing right away*/
                 autoFocus="on"
                 //whenever this changes, onChange, handle city change (function)//
+                //calling to axios with EVERY letter typed, making too many requests and being blocked
                 onChange={handleCitySearched}
               />
             </div>

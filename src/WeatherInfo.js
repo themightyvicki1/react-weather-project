@@ -34,29 +34,7 @@ export default function WeatherInfo(props) {
         </div>
         <div className="forecast">
           <p className="mt-3 mb-0 text-capitalize">5 day forecast</p>
-          <ul>
-            <li>
-              Thu
-              <DailyForecast long={props.long} lat={props.lat} />
-              <img src={props.data.icon} alt="" width="70" />
-            </li>
-            <li>
-              Fri
-              <img src={props.data.icon} alt="" width="70" />
-            </li>
-            <li>
-              Sat
-              <img src={props.data.icon} alt="" width="70" />
-            </li>
-            <li>
-              Sun
-              <img src={props.data.icon} alt="" width="70" />
-            </li>
-            <li>
-              Mon
-              <img src={props.data.icon} alt="" width="70" />
-            </li>
-          </ul>
+          <DailyForecast />
         </div>
       </div>
     </div>

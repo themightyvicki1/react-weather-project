@@ -23,7 +23,7 @@
 }
 
 /*all ul's come with some space, set to 0 to fix and adjust later */
-.Weather ul {
+/*.Weather ul {
   margin: 0;
   padding: 0;
 }
@@ -33,12 +33,12 @@
   font-size: 18px;
   line-height: 20px;
   font-weight: 400;
-}
+}*/
 
 /* this is the icon url being targeted */
 .Weather img {
   display: inline-block;
-  /* clearfix was not working for me so used these two lines to line up the image and temp */
+  /*clearfix was not working for me so used these two lines to line up the image and temp */
   position: relative;
   top: -20px;
 }
@@ -58,14 +58,19 @@
   line-height: 1;
 }
 
-/* make new css for weatherinfo */
-.forecast ul {
+.DailyForecast ul {
+  margin: 0;
+  padding: 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 6px;
 }
 
-.forecast li {
+.DailyForecast li {
+  list-style: none;
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: 400;
   border: 1px solid green;
   border-radius: 2px;
   text-align: center;
