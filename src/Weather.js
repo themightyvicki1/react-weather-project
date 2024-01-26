@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Weather.css";
 import WeatherInfo from "./WeatherInfo";
-//import DailyForecast from "./DailyForecast";
+import DailyForecast from "./DailyForecast";
 
 // receive defaultCity properties here //
 // create HTML of weather app //
@@ -45,7 +45,6 @@ export default function Weather(props) {
   function newSearch() {
     const apiKey = `456d41832ed298b7d12fff1db0159708`;
     //let city = "Sacramento";//
-    //let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(HandleResponse);
@@ -102,6 +101,8 @@ export default function Weather(props) {
         </form>
         {/*display the weatherData array info in this component */}
         <WeatherInfo data={weatherData} />
+        {/*call from this component to  be able to send the response, the weatherData array*/}
+        <DailyForecast city={weatherData.city} />
       </div>
     );
     //else if it's not ready, make the api call, that will then set everything and set ready to true //

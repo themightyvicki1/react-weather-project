@@ -1,7 +1,7 @@
 import React from "react";
 import FormattedDate from "./FormattedDate";
 import WeatherUnit from "./WeatherUnit";
-import DailyForecast from "./DailyForecast";
+//import DailyForecast from "./DailyForecast";
 
 // changed from weatherData(array).variable(temperature, humidity, etc) to props.data.variable b/c sending data as props not array b/c array isn't created here //
 export default function WeatherInfo(props) {
@@ -26,7 +26,10 @@ export default function WeatherInfo(props) {
         </div>
         <div className="col-6">
           <ul>
-            <li>High: {Math.round(props.data.tempMax)}°C</li>
+            <li>
+              High: {Math.round(props.data.tempMax)}
+              °C
+            </li>
             <li>Low: {Math.round(props.data.tempMin)}°C</li>
             <li>Humidity: {Math.round(props.data.humidity)}%</li>
             <li>Wind: {Math.round(props.data.windSpeed)} km/h</li>
@@ -34,7 +37,6 @@ export default function WeatherInfo(props) {
         </div>
         <div className="forecast">
           <p className="mt-3 mb-0 text-capitalize">5 day forecast</p>
-          <DailyForecast />
         </div>
       </div>
     </div>

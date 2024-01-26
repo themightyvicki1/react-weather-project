@@ -1,6 +1,18 @@
 import React from "react";
+import axios from "axios";
 
-export default function DailyForecast() {
+export default function DailyForecast(props) {
+  function handleResponse(response) {
+    console.log(response.data);
+  }
+  let city = props.city;
+
+  const key = `ab3868bf16f540f6bce01836242601`;
+  let apiUrl = `http://api.weatherapi.com/v1/forecast.json?key=${key}&q=${city}&days=5&units=metric`;
+  //let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
+
+  axios.get(apiUrl).then(handleResponse);
+
   return (
     <div className="DailyForecast">
       <ul>
